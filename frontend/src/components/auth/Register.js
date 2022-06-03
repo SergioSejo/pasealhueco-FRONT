@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
@@ -10,6 +11,10 @@ export const Register = () => {
 	const dispatch = useDispatch();
 
 	const { msgError } = useSelector((state) => state.ui);
+
+	useEffect(() => {
+		if (msgError) showError(msgError);
+	}, [msgError]);
 
 	const [formValues, handleInputChange] = useForm({
 		name: 'Sergio',
@@ -46,13 +51,15 @@ export const Register = () => {
 		return true;
 	};
 
+	const showError = (msg) => {
+		return Swal.fire('Error', msg, 'error');
+	};
+
 	return (
 		<>
 			<h3 className="auth__title">Register</h3>
 
 			<form onSubmit={handleRegister}>
-				{msgError && <div className="auth__alert-error">{msgError}</div>}
-
 				<input
 					type="text"
 					placeholder="Name"
