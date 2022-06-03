@@ -1,12 +1,13 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Link } from 'react-router-dom';
-import { starLogin } from '../../actions/auth';
+import { startLoginEmailPassword } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 
 export const Login = () => {
 	const dispatch = useDispatch();
+	const { loading } = useSelector((state) => state.ui);
 
 	const [formValues, handleInputChange] = useForm({
 		email: 'sergio.sejo@gmail.com',
@@ -17,7 +18,7 @@ export const Login = () => {
 
 	const handleLogin = (e) => {
 		e.preventDefault();
-		dispatch(starLogin(email, password));
+		dispatch(startLoginEmailPassword(email, password));
 	};
 
 	return (
@@ -44,7 +45,11 @@ export const Login = () => {
 					onChange={handleInputChange}
 				/>
 
-				<button type="submit" className="btn btn-primary btn-block">
+				<button
+					type="submit"
+					className="btn btn-primary btn-block"
+					disabled={loading}
+				>
 					Login
 				</button>
 
