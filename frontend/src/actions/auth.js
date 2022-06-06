@@ -1,66 +1,102 @@
 import { types } from '../types/types';
 import { startLoading, finishLoading } from './ui';
+import authService from '../services/authService';
+import userService from '../services/userService';
 
-export const startLoginEmailPassword = (email, password) => {
-	return (dispatch) => {
+import Swal from 'sweetalert2';
+
+export const startLogin = (email, password) => {
+	return async (dispatch) => {
 		dispatch(startLoading());
-		dispatch(login('XYZ1234', 'Sergiete'));
 
-		setTimeout(() => {
-			dispatch(finishLoading());
-		}, 3000);
+		const authServices = new authService();
 
-		/*firebase
-			.auth()
-			.signInWithEmailAndPassword(email, password)
-			.then(({ user }) => {
-				dispatch(login(user.uid, user.displayName));
+		const resp = await authServices.login(email, password);
+		if (resp) {
+			const body = resp.body;
 
-				dispatch(finishLoading());
-			})
-			.catch((e) => {
-				console.log(e);
-				dispatch(finishLoading());
-				Swal.fire('Error', e.message, 'error');
-			});*/
+			if (body.ok) {
+				localStorage.setItem('token', body.token);
+				localStorage.setItem('token-init-date', new Date().getTime());
+
+				dispatch(
+					login({
+						uid: body.uid,
+						name: body.name,
+					})
+				);
+			} else {
+				Swal.fire('Login ', body.msg, 'error');
+			}
+		}
+
+		dispatch(finishLoading());
 	};
 };
 
-export const startRegisterWithEmailPasswordName = (email, password, name) => {
-	return (dispatch) => {
-		const uid = 'XYZ1234';
-		const displayName = 'Sergiete';
-		dispatch(login(uid, displayName));
-		/*firebase
-			.auth()
-			.createUserWithEmailAndPassword(email, password)
-			.then(async ({ user }) => {
-				await user.updateProfile({ displayName: name });
+export const startChecking = () => {
+	return async (dispatch) => {
+		const authServices = new authService();
+		const resp = await authServices.renew();
+		if (resp) {
+			const body = resp.body;
+			console.log('body: ', body);
+			if (body.ok) {
+				localStorage.setItem('token', body.token);
+				localStorage.setItem('token-init-date', new Date().getTime());
 
-				dispatch(login(user.uid, user.displayName));
-			})
-			.catch((e) => {
-				console.log(e);
-				Swal.fire('Error', e.message, 'error');
-		});*/
+				dispatch(
+					login({
+						uid: body.uid,
+						name: body.name,
+					})
+				);
+			}
+		}
+		dispatch(finishChecking());
 	};
 };
 
-export const login = (uid, displayName) => {
+const finishChecking = () => ({ type: types.authFinishChecking });
+
+const login = (user) => {
 	return {
-		type: types.login,
-		payload: { uid, displayName },
+		type: types.authLogin,
+		payload: user,
 	};
 };
 
 export const startLogout = () => {
-	return async (dispatch) => {
-		//await firebase.auth().signOut();
-
+	return (dispatch) => {
+		localStorage.clear();
 		dispatch(logout());
 	};
 };
 
-export const logout = () => ({
-	type: types.logout,
-});
+const logout = () => ({ type: types.authLogout });
+
+export const startRegister = (name, email, password) => {
+	return async (dispatch) => {
+		const userServices = new userService();
+		const resp = await userServices.register(name, email, password);
+		if (resp) {
+			const body = resp.body;
+
+			if (body.ok) {
+				localStorage.setItem('token', body.token);
+				localStorage.setItem('token-init-date', new Date().getTime());
+
+				dispatch(
+					login({
+						uid: body.uid,
+						name: body.name,
+					})
+				);
+			} else {
+				Swal.fire('Registro ', body.msg, 'error');
+			}
+		} else {
+			Swal.fire('Registro: ', 'ha ocurriro un error inesperado', 'error');
+		}
+	};
+};
