@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import { startLogin } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 
+import { Button, Form, Image, Container } from 'react-bootstrap';
+
+import logo from '../../images/icono.png';
+
 export const Login = () => {
 	const dispatch = useDispatch();
 	const { loading } = useSelector((state) => state.ui);
@@ -23,57 +27,55 @@ export const Login = () => {
 
 	return (
 		<>
+			<Container className="auth__logoCenter">
+				<Image
+					src={logo}
+					alt="LOGO"
+					width="80"
+					height="80"
+					className="center"
+					rounded
+				/>
+			</Container>
+
 			<h3 className="auth__title">Login</h3>
 
-			<form onSubmit={handleLogin}>
-				<input
-					type="text"
-					placeholder="Email"
-					name="email"
-					className="auth__input"
-					autoComplete="off"
-					value={email}
-					onChange={handleInputChange}
-				/>
-
-				<input
-					type="password"
-					placeholder="Password"
-					name="password"
-					className="auth__input"
-					value={password}
-					onChange={handleInputChange}
-				/>
-
-				<button
+			<Form onSubmit={handleLogin}>
+				<Form.Group>
+					<Form.Label>Email</Form.Label>
+					<Form.Control
+						name="email"
+						type="email"
+						className="auth__input"
+						autoComplete="off"
+						placeholder="name@example.com"
+						value={email}
+						onChange={handleInputChange}
+					/>
+				</Form.Group>
+				<Form.Group>
+					<Form.Label>Password</Form.Label>
+					<Form.Control
+						name="password"
+						type="password"
+						className="auth__input"
+						autoComplete="off"
+						placeholder="name@example.com"
+						value={password}
+						onChange={handleInputChange}
+					/>
+				</Form.Group>
+				<Button
 					type="submit"
 					className="btn btn-primary btn-block"
 					disabled={loading}
 				>
 					Login
-				</button>
-
-				<div className="auth__social-networks">
-					<p>Login with social networks</p>
-
-					<div className="google-btn">
-						<div className="google-icon-wrapper">
-							<img
-								className="google-icon"
-								src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-								alt="google button"
-							/>
-						</div>
-						<p className="btn-text">
-							<b>Sign in with google</b>
-						</p>
-					</div>
-				</div>
-
+				</Button>
 				<Link to="/auth/register" className="link">
 					Create new account
 				</Link>
-			</form>
+			</Form>
 		</>
 	);
 };

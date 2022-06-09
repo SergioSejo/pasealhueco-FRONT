@@ -18,7 +18,6 @@ export const AppRouter = () => {
 		dispatch(startChecking());
 	}, [dispatch]);
 
-	console.log('checking: ', checking);
 	if (checking) {
 		return <h1>Espere...</h1>;
 	}
