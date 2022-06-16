@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
 import { useForm } from '../../hooks/useForm';
@@ -8,8 +7,6 @@ import { setError, removeError } from '../../actions/ui';
 import { startRegister } from '../../actions/auth';
 
 import logo from '../../images/icono.png';
-
-import { Button, Form, Image, Container } from 'react-bootstrap';
 
 export const Register = () => {
 	const dispatch = useDispatch();
@@ -61,8 +58,8 @@ export const Register = () => {
 
 	return (
 		<>
-			<Container className="auth__logoCenter">
-				<Image
+			<div className="auth__logoCenter">
+				<img
 					src={logo}
 					alt="LOGO"
 					width="80"
@@ -70,14 +67,14 @@ export const Register = () => {
 					className="center"
 					rounded
 				/>
-			</Container>
+			</div>
 
 			<h3 className="auth__title">Register</h3>
 
-			<Form onSubmit={handleRegister}>
-				<Form.Group>
-					<Form.Label>Name</Form.Label>
-					<Form.Control
+			<form onSubmit={handleRegister}>
+				<div>
+					<label>Name</label>
+					<input
 						type="text"
 						placeholder="Name"
 						name="name"
@@ -86,10 +83,10 @@ export const Register = () => {
 						value={name}
 						onChange={handleInputChange}
 					/>
-				</Form.Group>
-				<Form.Group>
-					<Form.Label>Email</Form.Label>
-					<Form.Control
+				</div>
+				<div>
+					<label>Email</label>
+					<input
 						name="email"
 						type="email"
 						className="auth__input"
@@ -98,10 +95,10 @@ export const Register = () => {
 						value={email}
 						onChange={handleInputChange}
 					/>
-				</Form.Group>
-				<Form.Group>
-					<Form.Label>Password</Form.Label>
-					<Form.Control
+				</div>
+				<div>
+					<label>Password</label>
+					<input
 						name="password"
 						type="password"
 						className="auth__input"
@@ -109,10 +106,10 @@ export const Register = () => {
 						value={password}
 						onChange={handleInputChange}
 					/>
-				</Form.Group>
-				<Form.Group>
-					<Form.Label>Confirm Password</Form.Label>
-					<Form.Control
+				</div>
+				<div>
+					<label>Confirm Password</label>
+					<input
 						name="password2"
 						type="password"
 						className="auth__input"
@@ -120,18 +117,18 @@ export const Register = () => {
 						value={password2}
 						onChange={handleInputChange}
 					/>
-				</Form.Group>
-				<Button
+				</div>
+				<button
 					type="submit"
 					className="btn btn-primary btn-block"
 					disabled={loading}
 				>
 					Register
-				</Button>
-				<Link to="/auth/login" className="link">
+				</button>
+				<a href="/auth/login" className="link">
 					Already registered?
-				</Link>
-			</Form>
+				</a>
+			</form>
 		</>
 	);
 };

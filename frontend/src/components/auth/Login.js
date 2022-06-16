@@ -1,11 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Link } from 'react-router-dom';
 import { startLogin } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
-
-import { Button, Form, Image, Container } from 'react-bootstrap';
 
 import logo from '../../images/icono.png';
 
@@ -27,23 +24,23 @@ export const Login = () => {
 
 	return (
 		<>
-			<Container className="auth__logoCenter">
-				<Image
+			<div className="auth__logoCenter">
+				<img
 					src={logo}
 					alt="LOGO"
 					width="80"
 					height="80"
 					className="center"
-					rounded
+					rounded="true"
 				/>
-			</Container>
+			</div>
 
 			<h3 className="auth__title">Login</h3>
 
-			<Form onSubmit={handleLogin}>
-				<Form.Group>
-					<Form.Label>Email</Form.Label>
-					<Form.Control
+			<form onSubmit={handleLogin}>
+				<div>
+					<label>Email</label>
+					<input
 						name="email"
 						type="email"
 						className="auth__input"
@@ -52,10 +49,10 @@ export const Login = () => {
 						value={email}
 						onChange={handleInputChange}
 					/>
-				</Form.Group>
-				<Form.Group>
-					<Form.Label>Password</Form.Label>
-					<Form.Control
+				</div>
+				<div>
+					<label>Password</label>
+					<input
 						name="password"
 						type="password"
 						className="auth__input"
@@ -64,18 +61,18 @@ export const Login = () => {
 						value={password}
 						onChange={handleInputChange}
 					/>
-				</Form.Group>
-				<Button
+				</div>
+				<button
 					type="submit"
 					className="btn btn-primary btn-block"
 					disabled={loading}
 				>
 					Login
-				</Button>
-				<Link to="/auth/register" className="link">
+				</button>
+				<a href="/auth/register" className="link">
 					Create new account
-				</Link>
-			</Form>
+				</a>
+			</form>
 		</>
 	);
 };
