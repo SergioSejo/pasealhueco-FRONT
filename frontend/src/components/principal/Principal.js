@@ -1,11 +1,10 @@
 import React from 'react';
-import { Navbar } from '../ui/Navbar';
+import { Menu } from '../ui/Menu';
 
 export const Principal = () => {
 	return (
 		<>
-			<Navbar />
-			<h3 className="auth__title">Principal</h3>
+			<Menu />
 		</>
 	);
 };

@@ -65,7 +65,7 @@ export const Register = () => {
 					width="80"
 					height="80"
 					className="center"
-					rounded
+					rounded="true"
 				/>
 			</div>
 

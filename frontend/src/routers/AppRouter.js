@@ -24,7 +24,7 @@ export const AppRouter = () => {
 
 	return (
 		<Router>
-			<div>
+			<div className="totalHeight">
 				<Switch>
 					<PublicRoute
 						path="/auth"
