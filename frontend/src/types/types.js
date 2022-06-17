@@ -11,5 +11,7 @@ export const types = {
 	uiStartLoading: '[UI] Start loading',
 	uiFinishLoading: '[UI] Finish loading',
 
+	menuStartLoad: '[Menu] Loading menu',
 	menuChangeOptionActive: '[Menu] Change option active',
+	menuDefaultOptionActive: '[Menu] Default option active',
 };

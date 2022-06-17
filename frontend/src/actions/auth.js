@@ -25,6 +25,7 @@ export const startLogin = (email, password) => {
 						name: body.name,
 					})
 				);
+				dispatch(startLoadMenu());
 			} else {
 				Swal.fire('Login ', body.msg, 'error');
 			}
@@ -51,6 +52,7 @@ export const startChecking = () => {
 						name: body.name,
 					})
 				);
+				dispatch(startLoadMenu());
 			}
 		}
 		dispatch(finishChecking());
@@ -70,10 +72,15 @@ export const startLogout = () => {
 	return (dispatch) => {
 		localStorage.clear();
 		dispatch(logout());
+		dispatch(defaultOptionMenu());
 	};
 };
 
 const logout = () => ({ type: types.authLogout });
+
+const defaultOptionMenu = () => ({ type: types.menuDefaultOptionActive });
+
+const startLoadMenu = () => ({ type: types.menuStartLoad });
 
 export const startRegister = (name, email, password) => {
 	return async (dispatch) => {
@@ -92,6 +99,7 @@ export const startRegister = (name, email, password) => {
 						name: body.name,
 					})
 				);
+				dispatch(startLoadMenu());
 			} else {
 				Swal.fire('Registro ', body.msg, 'error');
 			}
