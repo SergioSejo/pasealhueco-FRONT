@@ -41,11 +41,11 @@ export const Menu = () => {
 							href="/principal"
 							onClick={(e) => {
 								e.preventDefault();
-								handleOptionActive(menuOptions.principal);
+								handleOptionActive(menuOptions.resumen);
 							}}
-							className={optionActive === menuOptions.principal ? 'active' : ''}
+							className={optionActive === menuOptions.resumen ? 'active' : ''}
 						>
-							Principal
+							Resumen
 						</a>
 					</div>
 

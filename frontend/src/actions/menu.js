@@ -3,7 +3,7 @@ import { types } from '../types/types';
 export const menuStartLoad = () => {
 	return {
 		type: types.menuStartLoad,
-		payload: 'principal',
+		payload: 'resumen',
 	};
 };
 

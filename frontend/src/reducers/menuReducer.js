@@ -8,7 +8,7 @@ export const menuReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case types.menuStartLoad:
 			return {
-				optionActive: 'principal',
+				optionActive: 'resumen',
 			};
 		case types.menuChangeOptionActive:
 			return {

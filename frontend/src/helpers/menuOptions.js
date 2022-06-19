@@ -1,5 +1,5 @@
 export const menuOptions = {
-	principal: 'principal',
+	resumen: 'resumen',
 	equipos: 'equipos',
 	jornadas: 'jornadas',
 	estadisticas: 'estadisticas',
