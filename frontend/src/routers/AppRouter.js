@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
 import { AuthRouter } from './AuthRouter';
-import { Principal } from '../components/principal/Principal';
+import { Principal } from '../components/ui/Principal';
 import { useDispatch, useSelector } from 'react-redux';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';

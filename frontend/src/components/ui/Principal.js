@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { Menu } from '../ui/Menu';
-import { Jornada } from './Jornada';
-import { Equipo } from './Equipo';
+import { Menu } from './Menu';
+import { Jornada } from '../options/Jornada';
+import { Equipo } from '../options/Equipo';
 import { menuOptions } from '../../helpers/menuOptions';
 
 export const Principal = () => {
