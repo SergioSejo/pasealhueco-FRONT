@@ -95,6 +95,8 @@ export const Menu = () => {
 						>
 							Configuración
 						</a>
+					</div>
+					<div className="footerLogout">
 						<button className="btn btn-primary" onClick={handleLogout}>
 							<i className="fas fa-sign-out-alt"></i>
 							<span> Salir</span>
