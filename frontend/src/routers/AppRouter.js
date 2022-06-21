@@ -24,22 +24,20 @@ export const AppRouter = () => {
 
 	return (
 		<Router>
-			<div className="totalHeight">
-				<Switch>
-					<PublicRoute
-						path="/auth"
-						component={AuthRouter}
-						isAuthenticated={!!uid}
-					/>
-					<PrivateRoute
-						exact
-						path="/principal"
-						component={Principal}
-						isAuthenticated={!!uid}
-					/>
-					<Redirect to="/auth/login" />
-				</Switch>
-			</div>
+			<Switch>
+				<PublicRoute
+					path="/auth"
+					component={AuthRouter}
+					isAuthenticated={!!uid}
+				/>
+				<PrivateRoute
+					exact
+					path="/principal"
+					component={Principal}
+					isAuthenticated={!!uid}
+				/>
+				<Redirect to="/auth/login" />
+			</Switch>
 		</Router>
 	);
 };

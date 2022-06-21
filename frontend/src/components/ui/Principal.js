@@ -1,7 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import { Header } from './Header';
 import { Menu } from './Menu';
+import { Menu2 } from './Menu2';
 import { Resumen } from '../options/Resumen';
 import { Equipo } from '../options/Equipo';
 import { Jornada } from '../options/Jornada';
@@ -12,11 +14,15 @@ import { menuOptions } from '../../helpers/menuOptions';
 export const Principal = () => {
 	const { optionActive } = useSelector((state) => state.menu);
 
+	const variable = false;
+
 	return (
 		<>
-			<div className="totalHeight">
-				<Menu />
-				{optionActive === menuOptions.resumen ? (
+			<Header />
+			<Menu2 />
+			{variable && <Menu />}
+			{variable &&
+				(optionActive === menuOptions.resumen ? (
 					<Resumen />
 				) : optionActive === menuOptions.equipos ? (
 					<Equipo />
@@ -26,8 +32,7 @@ export const Principal = () => {
 					<Estadisticas />
 				) : (
 					<Configuracion />
-				)}
-			</div>
+				))}
 		</>
 	);
 };
