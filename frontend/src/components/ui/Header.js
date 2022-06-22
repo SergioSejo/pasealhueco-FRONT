@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Container, Navbar } from 'react-bootstrap';
+import { Container, Navbar, Button } from 'react-bootstrap';
 
 import logo from '../../images/icono.png';
 
 export const Header = () => {
 	return (
 		<>
-			<Navbar bg="dark" variant="dark">
+			<Navbar variant="dark">
 				<Container className="header_logo">
 					<Navbar.Brand href="#home">
 						<img
@@ -19,6 +19,9 @@ export const Header = () => {
 						/>{' '}
 						Pase Al Hueco
 					</Navbar.Brand>
+				</Container>
+				<Container>
+					<Button>Salir</Button>
 				</Container>
 			</Navbar>
 		</>

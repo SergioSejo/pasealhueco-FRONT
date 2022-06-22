@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 import { Header } from './Header';
 import { Menu } from './Menu';
-import { Menu2 } from './Menu2';
 import { Resumen } from '../options/Resumen';
 import { Equipo } from '../options/Equipo';
 import { Jornada } from '../options/Jornada';
@@ -19,8 +18,7 @@ export const Principal = () => {
 	return (
 		<>
 			<Header />
-			<Menu2 />
-			{variable && <Menu />}
+			<Menu />
 			{variable &&
 				(optionActive === menuOptions.resumen ? (
 					<Resumen />

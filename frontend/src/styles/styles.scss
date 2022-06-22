@@ -5,7 +5,14 @@
 @import './base/links';
 
 // Components
+//login
 @import './components/auth/loginRegister';
-@import './components/options/resumen';
+
+//ui
+@import './components/ui/header';
 @import './components/ui/menu';
+
+//options
+@import './components/options/resumen';
+
 @import './components/config/config';

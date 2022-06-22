@@ -1,9 +1,22 @@
-.list-group-item.active {
+.nav {
 	background-color: $primary !important;
-	border-color: $primary !important;
 }
 
-.list-group-item:first-child {
-	border-top-left-radius: initial !important;
-	border-top-right-radius: initial !important;
+.nav-link.active {
+	background-color: $light-grey !important;
+	border-color: $light-grey !important;
+	color: #212529 !important;
+}
+
+.nav-link {
+	color: #fff !important;
+}
+
+.nav-tabs .nav-link {
+	border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+}
+
+.tab-content {
+	background-color: $light-grey;
 }

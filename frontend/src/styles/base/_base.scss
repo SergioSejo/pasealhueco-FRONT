@@ -33,6 +33,10 @@ main {
 	cursor: pointer;
 }
 
-.totalHeight {
-	height: 100%;
+.container {
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+	max-width: 100% !important;
+	padding-right: 0 !important;
+	padding-left: 0 !important;
 }

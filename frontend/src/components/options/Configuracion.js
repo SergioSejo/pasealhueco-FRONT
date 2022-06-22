@@ -5,7 +5,7 @@ import { Jugador } from '../config/Jugador';
 export const Configuracion = () => {
 	return (
 		<>
-			<div className="contenido">
+			<div>
 				<div className="contenido-options">
 					<h1>Configuracion</h1>
 					<button>Datos personales</button>
