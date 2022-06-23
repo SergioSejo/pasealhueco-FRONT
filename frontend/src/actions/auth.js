@@ -1,7 +1,7 @@
 import { types } from '../types/types';
 import { startLoading, finishLoading } from './ui';
 import authService from '../services/authService';
-import userService from '../services/userService';
+import playerService from '../services/playerService';
 
 import Swal from 'sweetalert2';
 
@@ -61,10 +61,10 @@ export const startChecking = () => {
 
 const finishChecking = () => ({ type: types.authFinishChecking });
 
-const login = (user) => {
+const login = (player) => {
 	return {
 		type: types.authLogin,
-		payload: user,
+		payload: player,
 	};
 };
 
@@ -84,8 +84,8 @@ const startLoadMenu = () => ({ type: types.menuStartLoad });
 
 export const startRegister = (name, email, password) => {
 	return async (dispatch) => {
-		const userServices = new userService();
-		const resp = await userServices.register(name, email, password);
+		const playerServices = new playerService();
+		const resp = await playerServices.register(name, email, password);
 		if (resp) {
 			const body = resp.body;
 
