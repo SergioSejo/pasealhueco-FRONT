@@ -1,6 +1,6 @@
 export const menuOptions = {
 	resumen: 'resumen',
-	equipos: 'equipos',
+	equipo: 'equipo',
 	jornadas: 'jornadas',
 	estadisticas: 'estadisticas',
 	config: 'config',

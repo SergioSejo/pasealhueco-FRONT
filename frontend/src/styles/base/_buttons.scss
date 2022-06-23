@@ -1,35 +1,15 @@
-.btn {
-	background-color: transparent;
-	border: none;
-	color: white;
-	cursor: pointer;
-	font-size: 12px;
-	padding: 7px 10px 7px 10px;
-
-	transition: color 0.3s ease;
-
-	&:focus {
-		outline: none;
-	}
-
-	&:hover {
-		color: darken($color: white, $amount: 10);
-	}
-}
-
 .btn-primary {
-	background-color: $primary;
+	background-color: $primary !important;
+	border-color: $primary !important;
 	border-radius: 2px;
 
 	&:disabled {
-		background-color: lighten($color: $primary, $amount: 15);
+		background-color: lighten($color: $primary, $amount: 15) !important;
+		border-color: lighten($color: $primary, $amount: 15) !important;
 	}
 
 	&:hover {
-		background-color: darken($color: $primary, $amount: 15);
+		background-color: darken($color: $primary, $amount: 15) !important;
+		border-color: darken($color: $primary, $amount: 15) !important;
 	}
-}
-
-.btn-block {
-	width: 100%;
 }

@@ -22,7 +22,7 @@ export const Principal = () => {
 			{variable &&
 				(optionActive === menuOptions.resumen ? (
 					<Resumen />
-				) : optionActive === menuOptions.equipos ? (
+				) : optionActive === menuOptions.equipo ? (
 					<Equipo />
 				) : optionActive === menuOptions.jornadas ? (
 					<Jornada />

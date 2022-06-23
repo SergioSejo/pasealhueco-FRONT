@@ -24,7 +24,7 @@ export const Menu = () => {
 				<Tab eventKey={menuOptions.resumen} title="Resumen">
 					<Resumen />
 				</Tab>
-				<Tab eventKey={menuOptions.equipos} title="Equipo">
+				<Tab eventKey={menuOptions.equipo} title="Equipo">
 					<Equipo />
 				</Tab>
 				<Tab eventKey={menuOptions.jornadas} title="Jornadas">

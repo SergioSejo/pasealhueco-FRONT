@@ -1,9 +1,21 @@
 .header_logo {
 	margin-left: 0 !important;
 	margin-right: 0 !important;
+}
+
+.header_left_rigth {
 	width: 20% !important;
+}
+
+.header_buttons {
+	margin-right: 10px;
 }
 
 .navbar {
 	background-color: $secundary !important;
+}
+
+.navbar div {
+	color: #fff !important;
+	justify-content: center !important;
 }
