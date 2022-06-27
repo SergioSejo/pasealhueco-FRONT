@@ -8,36 +8,40 @@ export const JornadaTable = (year) => {
 	const [jornadas, setJornadas] = useState([]);
 
 	useEffect(() => {
+		const getJornadas = async () => {
+			const jornadasPorAño = await jornadaServices.getByYear(year.year);
+			setJornadas(jornadasPorAño?.body);
+		};
 		getJornadas();
-	});
-
-	const getJornadas = async () => {
-		const algo = await jornadaServices.getByYear(year);
-		console.log('Jornadas', algo.body.jornadas);
-	};
-
-	//setJornadas(jornadaServices.getByYear(año));
+	}, [year.year]);
 
 	//funcion para pintar las filas
-	/*const renderTableHeader = () => {
-		if (jornadas.length === 0) {
-			return (
-				<tr>
-					<td>1</td>
-					<td>Sad Eyes</td>
-					<td>Q3</td>
-					<td>3-1</td>
-					<td>23-06-2022</td>
+	const renderTableHeader = () => {
+		let bodyTR = [];
+		jornadas.forEach((element) => {
+			console.log('element: ', element);
+			//Falta con el id coger los nombres de los equipos
+			//Las fechas dan guerra, mirar si guardar en otro formato y no string
+			bodyTR.push(
+				<tr key={element.matchDate}>
+					<td>{bodyTR.length + 1}</td>
+					<td>{element.team_1.id}</td>
+					<td>{element.team_2.id}</td>
+					<td>
+						{element.team_1.score}-{element.team_2.score}
+					</td>
+					<td>{Date.parse(element.matchDate)}</td>
 					<td>16:00</td>
-					<td>Campo 2 Moratalaz</td>
+					<td>{element.place}</td>
 				</tr>
 			);
-		}
-	};*/
+		});
+		return bodyTR;
+	};
 
 	return (
 		<>
-			<Table responsive="sm">
+			<Table responsive="sm" striped>
 				<thead>
 					<tr>
 						<th>Jornada</th>
@@ -49,17 +53,7 @@ export const JornadaTable = (year) => {
 						<th>Campo</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Sad Eyes</td>
-						<td>Q3</td>
-						<td>3-1</td>
-						<td>23-06-2022</td>
-						<td>16:00</td>
-						<td>Campo 2 Moratalaz</td>
-					</tr>
-				</tbody>
+				<tbody>{renderTableHeader()}</tbody>
 			</Table>
 		</>
 	);

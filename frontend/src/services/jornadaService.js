@@ -5,10 +5,8 @@ const localhost = 'http://localhost:4000/api';
 class jornadaService {
 	getByYear = async (year) => {
 		try {
-			console.log('year: ', year);
 			const token = localStorage.getItem('token') || '';
 			const res = await axios.get(
-				//AQUIIII
 				localhost + `/jornada/getByYear?year=${year}`,
 				{
 					headers: {

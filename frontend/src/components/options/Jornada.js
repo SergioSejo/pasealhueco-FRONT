@@ -7,7 +7,6 @@ export const Jornada = () => {
 	const [option, setOption] = useState('2021');
 
 	const onSelectOption = (k) => {
-		console.log('k: ', k);
 		setOption(k);
 	};
 
