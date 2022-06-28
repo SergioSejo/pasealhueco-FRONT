@@ -10,7 +10,6 @@ export const JornadaTable = (year) => {
 	useEffect(() => {
 		const getJornadas = async () => {
 			const jornadasPorAño = await jornadaServices.getByYear(year.year);
-			console.log('jornadasPorAño: ', jornadasPorAño);
 			setJornadas(jornadasPorAño?.body);
 		};
 		getJornadas();
