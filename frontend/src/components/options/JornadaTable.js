@@ -10,6 +10,7 @@ export const JornadaTable = (year) => {
 	useEffect(() => {
 		const getJornadas = async () => {
 			const jornadasPorAño = await jornadaServices.getByYear(year.year);
+			console.log('jornadasPorAño: ', jornadasPorAño);
 			setJornadas(jornadasPorAño?.body);
 		};
 		getJornadas();
@@ -19,18 +20,16 @@ export const JornadaTable = (year) => {
 	const renderTableHeader = () => {
 		let bodyTR = [];
 		jornadas.forEach((element) => {
-			console.log('element: ', element);
-			//Falta con el id coger los nombres de los equipos
 			//Las fechas dan guerra, mirar si guardar en otro formato y no string
 			bodyTR.push(
 				<tr key={element.matchDate}>
 					<td>{bodyTR.length + 1}</td>
-					<td>{element.team_1.id}</td>
-					<td>{element.team_2.id}</td>
+					<td>{element.team_1.team.name}</td>
+					<td>{element.team_2.team.name}</td>
 					<td>
 						{element.team_1.score}-{element.team_2.score}
 					</td>
-					<td>{Date.parse(element.matchDate)}</td>
+					<td>{element.matchDate}</td>
 					<td>16:00</td>
 					<td>{element.place}</td>
 				</tr>
