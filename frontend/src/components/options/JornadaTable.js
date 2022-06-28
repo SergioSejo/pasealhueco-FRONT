@@ -20,7 +20,12 @@ export const JornadaTable = (year) => {
 	const renderTableHeader = () => {
 		let bodyTR = [];
 		jornadas.forEach((element) => {
-			//Las fechas dan guerra, mirar si guardar en otro formato y no string
+			let matchDate = new Date(
+				parseFloat(element.matchDate)
+			).toLocaleDateString('es');
+			let matchHour = new Date(
+				parseFloat(element.matchDate)
+			).toLocaleTimeString();
 			bodyTR.push(
 				<tr key={element.matchDate}>
 					<td>{bodyTR.length + 1}</td>
@@ -29,8 +34,8 @@ export const JornadaTable = (year) => {
 					<td>
 						{element.team_1.score}-{element.team_2.score}
 					</td>
-					<td>{element.matchDate}</td>
-					<td>16:00</td>
+					<td>{matchDate}</td>
+					<td>{matchHour}</td>
 					<td>{element.place}</td>
 				</tr>
 			);
