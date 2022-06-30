@@ -1,7 +1,7 @@
 export const menuOptions = {
 	resumen: 'resumen',
 	equipo: 'equipo',
-	jornadas: 'jornadas',
+	matches: 'matches',
 	estadisticas: 'estadisticas',
 	config: 'config',
 };

@@ -5,7 +5,7 @@ import { Header } from './Header';
 import { Menu } from './Menu';
 import { Resumen } from '../options/Resumen';
 import { Equipo } from '../options/Equipo';
-import { Jornada } from '../options/Jornada';
+import { Match } from '../options/Match';
 import { Estadisticas } from '../options/Estadisticas';
 import { Configuracion } from '../options/Configuracion';
 import { menuOptions } from '../../helpers/menuOptions';
@@ -24,8 +24,8 @@ export const Principal = () => {
 					<Resumen />
 				) : optionActive === menuOptions.equipo ? (
 					<Equipo />
-				) : optionActive === menuOptions.jornadas ? (
-					<Jornada />
+				) : optionActive === menuOptions.matches ? (
+					<Match />
 				) : optionActive === menuOptions.estadisticas ? (
 					<Estadisticas />
 				) : (

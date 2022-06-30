@@ -2,18 +2,15 @@ const axios = require('axios');
 
 const localhost = 'http://localhost:4000/api';
 
-class jornadaService {
+class matchService {
 	getByYear = async (year) => {
 		try {
 			const token = localStorage.getItem('token') || '';
-			const res = await axios.get(
-				localhost + `/jornada/getByYear?year=${year}`,
-				{
-					headers: {
-						'x-token': token,
-					},
-				}
-			);
+			const res = await axios.get(localhost + `/match/getByYear?year=${year}`, {
+				headers: {
+					'x-token': token,
+				},
+			});
 			return res.data;
 		} catch (ex) {
 			if (ex.response.status === 400) {
@@ -25,4 +22,4 @@ class jornadaService {
 	};
 }
 
-export default jornadaService;
+export default matchService;

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 
-import { JornadaTable } from './JornadaTable';
+import { MatchTable } from './MatchTable';
 
-export const Jornada = () => {
+export const Match = () => {
 	const [option, setOption] = useState('2021');
 
 	const onSelectOption = (k) => {
@@ -12,13 +12,13 @@ export const Jornada = () => {
 
 	return (
 		<>
-			<div className="jornadas_cabecera">
-				<span>Introduzca el año para ver las jornadas: </span>
+			<div className="matches_cabecera">
+				<span>Introduzca el año para ver los partidos: </span>
 				<DropdownButton
 					id="dropdown-basic-button"
 					title={option}
 					onSelect={onSelectOption}
-					className="jornadas_dropdown"
+					className="matchess_dropdown"
 				>
 					<Dropdown.Item eventKey="2016">2016</Dropdown.Item>
 					<Dropdown.Item eventKey="2017">2017</Dropdown.Item>
@@ -29,7 +29,7 @@ export const Jornada = () => {
 				</DropdownButton>
 			</div>
 			<div>
-				<JornadaTable year={option} />
+				<MatchTable year={option} />
 			</div>
 		</>
 	);

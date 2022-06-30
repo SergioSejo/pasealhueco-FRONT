@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 
-import jornadaService from '../../services/jornadaService';
+import jornadaService from '../../services/matchService';
 
-export const JornadaTable = (year) => {
+export const MatchTable = (year) => {
 	const jornadaServices = new jornadaService();
 	const [jornadas, setJornadas] = useState([]);
 
@@ -18,28 +18,30 @@ export const JornadaTable = (year) => {
 	//funcion para pintar las filas
 	const renderTableHeader = () => {
 		let bodyTR = [];
-		jornadas.forEach((element) => {
-			let matchDate = new Date(
-				parseFloat(element.matchDate)
-			).toLocaleDateString('es');
-			let matchHour = new Date(
-				parseFloat(element.matchDate)
-			).toLocaleTimeString();
-			bodyTR.push(
-				<tr key={element.matchDate}>
-					<td>{bodyTR.length + 1}</td>
-					<td>{element.team_1.team.name}</td>
-					<td>{element.team_2.team.name}</td>
-					<td>
-						{element.team_1.score}-{element.team_2.score}
-					</td>
-					<td>{matchDate}</td>
-					<td>{matchHour}</td>
-					<td>{element.place}</td>
-				</tr>
-			);
-		});
-		return bodyTR;
+		if (jornadas) {
+			jornadas.forEach((element) => {
+				let matchDate = new Date(
+					parseFloat(element.matchDate)
+				).toLocaleDateString('es');
+				let matchHour = new Date(
+					parseFloat(element.matchDate)
+				).toLocaleTimeString();
+				bodyTR.push(
+					<tr key={element.matchDate}>
+						<td>{bodyTR.length + 1}</td>
+						<td>{element.team_1.team.name}</td>
+						<td>{element.team_2.team.name}</td>
+						<td>
+							{element.team_1.score}-{element.team_2.score}
+						</td>
+						<td>{matchDate}</td>
+						<td>{matchHour}</td>
+						<td>{element.place}</td>
+					</tr>
+				);
+			});
+			return bodyTR;
+		}
 	};
 
 	return (

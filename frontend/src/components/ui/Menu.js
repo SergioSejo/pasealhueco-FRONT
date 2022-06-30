@@ -4,7 +4,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 
 import { Resumen } from '../options/Resumen';
 import { Equipo } from '../options/Equipo';
-import { Jornada } from '../options/Jornada';
+import { Match } from '../options/Match';
 import { Estadisticas } from '../options/Estadisticas';
 import { menuOptions } from '../../helpers/menuOptions';
 import { menuChangeOptionActive } from '../../actions/menu';
@@ -27,8 +27,8 @@ export const Menu = () => {
 				<Tab eventKey={menuOptions.equipo} title="Equipo">
 					<Equipo />
 				</Tab>
-				<Tab eventKey={menuOptions.jornadas} title="Jornadas">
-					<Jornada />
+				<Tab eventKey={menuOptions.matches} title="Matches">
+					<Match />
 				</Tab>
 				<Tab eventKey={menuOptions.estadisticas} title="Estadísticas">
 					<Estadisticas />
