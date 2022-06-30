@@ -18,7 +18,7 @@ export const Match = () => {
 					id="dropdown-basic-button"
 					title={option}
 					onSelect={onSelectOption}
-					className="matchess_dropdown"
+					className="matches_dropdown"
 				>
 					<Dropdown.Item eventKey="2016">2016</Dropdown.Item>
 					<Dropdown.Item eventKey="2017">2017</Dropdown.Item>

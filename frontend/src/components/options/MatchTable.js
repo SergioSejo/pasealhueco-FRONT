@@ -1,33 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 
-import jornadaService from '../../services/matchService';
+import matchService from '../../services/matchService';
 
 export const MatchTable = (year) => {
-	const jornadaServices = new jornadaService();
-	const [jornadas, setJornadas] = useState([]);
+	const matchServices = new matchService();
+	const [matches, setMatches] = useState([]);
 
 	useEffect(() => {
-		const getJornadas = async () => {
-			const jornadasPorAño = await jornadaServices.getByYear(year.year);
-			setJornadas(jornadasPorAño?.body);
+		const getMatches = async () => {
+			const matchesByYear = await matchServices.getByYear(year.year);
+			setMatches(matchesByYear?.body);
 		};
-		getJornadas();
+		getMatches();
 	}, [year.year]);
 
 	//funcion para pintar las filas
 	const renderTableHeader = () => {
 		let bodyTR = [];
-		if (jornadas) {
-			jornadas.forEach((element) => {
-				let matchDate = new Date(
-					parseFloat(element.matchDate)
-				).toLocaleDateString('es');
-				let matchHour = new Date(
-					parseFloat(element.matchDate)
-				).toLocaleTimeString();
+		if (matches) {
+			matches.forEach((element) => {
+				let matchDate = new Date(parseFloat(element.date)).toLocaleDateString(
+					'es'
+				);
+				let matchHour = new Date(parseFloat(element.date)).toLocaleTimeString();
 				bodyTR.push(
-					<tr key={element.matchDate}>
+					<tr key={element.date}>
 						<td>{bodyTR.length + 1}</td>
 						<td>{element.team_1.team.name}</td>
 						<td>{element.team_2.team.name}</td>
@@ -49,7 +47,7 @@ export const MatchTable = (year) => {
 			<Table responsive="sm" striped>
 				<thead>
 					<tr>
-						<th>Jornada</th>
+						<th>Partido</th>
 						<th>Local</th>
 						<th>Visitante</th>
 						<th>Resultado</th>
