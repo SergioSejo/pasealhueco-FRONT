@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { Header } from './Header';
 import { Menu } from './Menu';
+import { Footer } from './Footer';
 import { Resumen } from '../options/Resumen';
 import { Equipo } from '../options/Equipo';
 import { Match } from '../options/Match';
@@ -31,6 +32,7 @@ export const Principal = () => {
 				) : (
 					<Configuracion />
 				))}
+			<Footer />
 		</>
 	);
 };

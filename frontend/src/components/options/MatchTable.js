@@ -23,7 +23,7 @@ export const MatchTable = (year) => {
 		let journeyTable;
 		let maxJourney = Math.max(...matches.map((o) => o.journey));
 		if (matches.length === 0) {
-			return <h1 className="journey_center">No hay partidos disponibles</h1>;
+			return <h1 className="text_center">No hay partidos disponibles</h1>;
 		}
 		while (journey <= maxJourney) {
 			arrayJourney = matches.filter((m) => {
@@ -32,7 +32,7 @@ export const MatchTable = (year) => {
 
 			journeyTable = (
 				<div key={'div-journey' + journey}>
-					<h2 key={'h2-' + journey} className="journey_center">
+					<h2 key={'h2-' + journey} className="text_center">
 						Jornada {journey}
 					</h2>
 					<Table key={'table-' + journey} responsive="sm" striped>

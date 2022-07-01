@@ -12,7 +12,7 @@ export const Match = () => {
 
 	return (
 		<>
-			<div className="matches_cabecera">
+			<div className="text_center">
 				<span>Introduzca el año para ver los partidos: </span>
 				<DropdownButton
 					id="dropdown-basic-button"
